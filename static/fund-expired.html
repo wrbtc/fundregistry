@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expired — Open Source Relay Infrastructure Fund — Fund Registry</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none'><rect x='12' y='12' width='40' height='40' rx='5' stroke='%232C2C2C' stroke-width='3.5'/><line x1='20' y1='24' x2='44' y2='24' stroke='%232C2C2C' stroke-width='3' stroke-linecap='round'/><line x1='20' y1='32' x2='44' y2='32' stroke='%232C2C2C' stroke-width='3' stroke-linecap='round'/><line x1='20' y1='40' x2='33' y2='40' stroke='%232C2C2C' stroke-width='3' stroke-linecap='round'/><path d='M35 44.5 L40 39 L45 44.5 L40 47.5 Z' fill='%232C2C2C'/></svg>">
+  <link rel="stylesheet" href="styles.css?v=aec13881">
+</head>
+<body>
+  <div class="beta-banner"><strong>Beta</strong> Fund Registry is in beta. Features, data, and terms may change without notice. <a href="terms.html#beta">Learn more</a></div>
+  <div class="container page">
+
+    <header class="site-header">
+      <a href="/" class="site-logo"><svg class="logo-mark" width="22" height="22" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="12" y="12" width="40" height="40" rx="5" stroke="currentColor" stroke-width="3.5"/><line x1="20" y1="24" x2="44" y2="24" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><line x1="20" y1="32" x2="44" y2="32" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><line x1="20" y1="40" x2="33" y2="40" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M35 44.5 L40 39 L45 44.5 L40 47.5 Z" fill="currentColor"/></svg>Fund Registry</a>
+      <nav class="site-nav">
+        <a href="create.html">Create</a>
+        <a href="manage">Manage</a>
+      </nav>
+    </header>
+
+    <div class="card" style="padding: 0; overflow: hidden; opacity: 0.6; pointer-events: none;" id="expiredContent">
+      <div class="status-bar expired"></div>
+      <div style="padding: var(--space-lg);">
+
+        <h1 style="margin-bottom: var(--space-sm);">Open Source Relay Infrastructure Fund</h1>
+
+        <div class="page-meta">
+          <span class="badge badge-expired">⊘ Expired</span>
+          <span class="meta-separator">·</span>
+          <span class="meta-item">Expired March 20, 2026</span>
+        </div>
+
+        <div class="section">
+          <div class="funding-summary">
+            <div class="funding-amount" style="color: var(--text-3);">0.45 / 1.00 BTC</div>
+            <div class="progress-bar"><div class="progress-fill" style="width: 45%; background: var(--text-3);"></div></div>
+            <div class="funding-detail">Expired · 23 contributions</div>
+          </div>
+          <div class="address-box" style="opacity: 0.5; margin-top: var(--space-md);">
+            <span>bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh</span>
+            <button class="copy-btn" disabled>Copy</button>
+          </div>
+        </div>
+
+        <div class="tabs">
+          <button class="tab active">Story</button>
+          <button class="tab">Links</button>
+          <button class="tab">Transactions</button>
+        </div>
+
+        <div class="story-layout">
+          <div class="campaign-photo" style="display: flex; align-items: center; justify-content: center; color: var(--text-3); font-size: 0.75rem;">Photo</div>
+          <div class="story-text">
+            <p>We operate a network of open-source relay infrastructure serving the Nostr protocol. This fund covers hardware costs, bandwidth, and maintenance for 12 relays across 6 countries.</p>
+          </div>
+        </div>
+
+        <!-- Expired verification button -->
+        <div class="section" style="margin-top: var(--space-lg);">
+          <div class="section-title">Verification button</div>
+          <a href="#" class="verify-button state-expired" style="text-decoration: none;">
+            <span>● Open Source Relay Fund</span>
+            <span class="vcode">· XG82nd</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="trust-boundary">
+      This badge proves wallet control, not the truth of any claims.
+    </div>
+
+    <footer class="site-footer">
+      <a href="/">Fund Registry</a>
+      <span class="meta-separator">·</span>
+      <a href="terms.html">Terms</a>
+      <span class="meta-separator">·</span>
+      <a href="terms.html#report">Report this page</a>
+    </footer>
+
+  </div>
+
+  <!-- Expired overlay -->
+  <div class="expired-overlay" id="expiredOverlay">
+    <div class="expired-card">
+      <div class="badge badge-expired" style="margin-bottom: var(--space-md);">⊘ Expired</div>
+      <h2>This funding page expired on March 20, 2026</h2>
+      <p>Funding actions are disabled until renewed.</p>
+      <p style="font-size: 0.8125rem; color: var(--text-3); margin-bottom: var(--space-md);">The verification button for this campaign is now red. The page owner can renew to restore the badge.</p>
+      <a href="renew.html" class="btn btn-primary">Renew this page</a>
+      <button class="expired-dismiss" id="dismissExpiredOverlayBtn">View archived content ↓</button>
+    </div>
+  </div>
+  <script src="/assets/fund-expired.js" defer></script>
+<!-- Contact bubble -->
+<button id="cb-toggle" class="cb-toggle" aria-label="Send feedback"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></button>
+<div id="cb-card" class="cb-card">
+  <div class="cb-header"><span>Send us a message</span><button class="cb-close">&times;</button></div>
+  <div id="cb-form">
+    <div class="cb-body">
+      <textarea id="cb-msg" placeholder="Question, feedback, or just say hi" maxlength="2000"></textarea>
+      <input type="email" id="cb-email" placeholder="Email if you'd like a reply">
+      <input type="text" id="cb-website" style="display:none" tabindex="-1" autocomplete="off">
+    </div>
+    <div class="cb-footer"><button id="cb-send" class="cb-send">Send</button></div>
+  </div>
+  <div id="cb-status" class="cb-status" style="display:none"></div>
+</div>
+<script src="/assets/contact-bubble.js" defer></script>
+</body>
+</html>

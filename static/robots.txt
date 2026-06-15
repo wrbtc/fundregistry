@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Allow: /llms.txt
+
+Disallow: /api/
+Disallow: /wp-admin/
+Disallow: /wordpress/
+Disallow: /.git/
+
+Sitemap: https://fundregistry.org/sitemap.xml

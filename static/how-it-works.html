@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How Verification Works — Fund Registry</title>
+  <meta name="description" content="Fund Registry proves control of a listed Bitcoin wallet. It does not prove identity or campaign truth.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none'><rect x='12' y='12' width='40' height='40' rx='5' stroke='%232C2C2C' stroke-width='3.5'/><line x1='20' y1='24' x2='44' y2='24' stroke='%232C2C2C' stroke-width='3' stroke-linecap='round'/><line x1='20' y1='32' x2='44' y2='32' stroke='%232C2C2C' stroke-width='3' stroke-linecap='round'/><line x1='20' y1='40' x2='33' y2='40' stroke='%232C2C2C' stroke-width='3' stroke-linecap='round'/><path d='M35 44.5 L40 39 L45 44.5 L40 47.5 Z' fill='%232C2C2C'/></svg>">
+  <link rel="stylesheet" href="styles.css?v=aec13881">
+</head>
+<body>
+  <div class="beta-banner"><strong>Beta</strong> Fund Registry is in beta. Features, data, and terms may change without notice. <a href="terms.html#beta">Learn more</a></div>
+  <div class="container page">
+
+    <header class="site-header">
+      <a href="/" class="site-logo"><svg class="logo-mark" width="22" height="22" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="12" y="12" width="40" height="40" rx="5" stroke="currentColor" stroke-width="3.5"/><line x1="20" y1="24" x2="44" y2="24" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><line x1="20" y1="32" x2="44" y2="32" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><line x1="20" y1="40" x2="33" y2="40" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M35 44.5 L40 39 L45 44.5 L40 47.5 Z" fill="currentColor"/></svg>Fund Registry</a>
+      <nav class="site-nav">
+        <a href="create.html">Create</a>
+        <a href="manage">Manage</a>
+      </nav>
+    </header>
+
+    <!-- 1. Plain intro -->
+    <h1 style="margin-bottom: var(--space-sm);">How verification works</h1>
+    <p style="color: var(--text-2); font-size: 1.125rem; line-height: 1.5; margin-bottom: var(--space-2xl); max-width: 560px;">
+      Fund Registry proves control of a listed Bitcoin wallet. It does not prove identity or campaign truth.
+    </p>
+
+    <!-- 2. What each tier means -->
+    <section class="section">
+      <h2>Tiers</h2>
+      <div class="tier-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md);">
+
+        <div class="card" style="margin-bottom: 0;">
+          <span class="badge badge-free" style="margin-bottom: var(--space-md);">free</span>
+          <ul style="padding-left: var(--space-md); color: var(--text-2); font-size: 0.875rem; line-height: 1.8; margin: 0;">
+            <li>Public page for 10 days</li>
+            <li>No wallet proof</li>
+            <li>No Bitcoin anchor</li>
+          </ul>
+        </div>
+
+        <div class="card" style="margin-bottom: 0;">
+          <span class="badge badge-tier" style="margin-bottom: var(--space-md);">tier2</span>
+          <ul style="padding-left: var(--space-md); color: var(--text-2); font-size: 0.875rem; line-height: 1.8; margin: 0;">
+            <li>Public page for 30 days</li>
+            <li>Wallet proof</li>
+            <li>Verification badge</li>
+          </ul>
+        </div>
+
+        <div class="card" style="margin-bottom: 0;">
+          <span class="badge badge-tier" style="margin-bottom: var(--space-md);">tier3</span>
+          <ul style="padding-left: var(--space-md); color: var(--text-2); font-size: 0.875rem; line-height: 1.8; margin: 0;">
+            <li>Public page for 90 days</li>
+            <li>Wallet proof</li>
+            <li>Proof anchored on Bitcoin</li>
+            <li>Public verification trail</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 3. Wallet proof, step by step -->
+    <section class="section">
+      <h2>Wallet proof</h2>
+      <p style="color: var(--text-2); font-size: 0.9375rem; margin-bottom: var(--space-lg);">
+        Wallet proof confirms that you — not someone else — control the Bitcoin address on your funding page. After verification, you get a shareable verification badge that donors can check before sending Bitcoin. Available on tier2 and tier3.
+      </p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Create a page</h3>
+          <p>Publish a funding page with your Bitcoin address.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Sign a challenge</h3>
+          <p>On your manage page, click <strong>Verify Wallet</strong>. Copy the challenge message, sign it with your wallet software (Sparrow, Electrum, or bitcoin-cli), and paste the signature back.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Verified</h3>
+          <p>Fund Registry checks the signature. Your page gets a verification badge.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Bitcoin anchor, step by step -->
+    <section class="section">
+      <h2>Bitcoin anchor</h2>
+      <p style="color: var(--text-2); font-size: 0.9375rem; margin-bottom: var(--space-lg);">
+        Fund Registry writes your verification proof directly to the Bitcoin blockchain — the same network that secures billions of dollars. Once written, no one can alter or delete it. Available on tier3 only.
+      </p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Fingerprint the proof</h3>
+          <p>Fund Registry creates a unique digital fingerprint of your verification record.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Write to the blockchain</h3>
+          <p>That fingerprint is broadcast in a real Bitcoin transaction, permanently recorded on the blockchain alongside every other Bitcoin payment.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Anyone can verify</h3>
+          <p>The transaction is public. Anyone with a block explorer can look it up and confirm your proof is real and untampered.</p>
+        </div>
+      </div>
+      <p style="color: var(--text-3); font-size: 0.8125rem; font-style: italic; margin-top: var(--space-lg);">
+        Only the fingerprint is written on-chain, not the full page content. This is enough to prove the record existed at a specific time, without storing personal data on Bitcoin.
+      </p>
+    </section>
+
+    <!-- 5. What this proves / does not prove -->
+    <section class="section">
+      <h2>Scope of verification</h2>
+      <div class="scope-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg);">
+
+        <div style="padding: var(--space-lg); background: var(--verified-bg); border: 1px solid var(--verified-border); border-radius: var(--radius);">
+          <h3 style="color: var(--verified-text); font-family: var(--font-body); font-size: 0.8125rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: var(--space-md);">This proves</h3>
+          <ul style="padding-left: var(--space-md); color: var(--text-1); font-size: 0.9375rem; line-height: 1.8; margin: 0;">
+            <li>The listed wallet participated in the proof</li>
+            <li>The creator controlled that wallet at proof time</li>
+            <li>The proof record was publicly anchored on Bitcoin (tier3)</li>
+          </ul>
+        </div>
+
+        <div style="padding: var(--space-lg); background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);">
+          <h3 style="color: var(--text-2); font-family: var(--font-body); font-size: 0.8125rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: var(--space-md);">This does not prove</h3>
+          <ul style="padding-left: var(--space-md); color: var(--text-1); font-size: 0.9375rem; line-height: 1.8; margin: 0;">
+            <li>Who the creator is</li>
+            <li>Whether the cause is true</li>
+            <li>Whether donating is safe</li>
+            <li>Whether funds will be used as described</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 6. Lifecycle states -->
+    <section class="section">
+      <h2>Page states</h2>
+      <p style="color: var(--text-2); font-size: 0.9375rem; margin-bottom: var(--space-lg);">
+        Every page moves through a defined lifecycle. Historical proof is different from current active trust state.
+      </p>
+      <div style="display: grid; gap: var(--space-sm);">
+
+        <div style="display: flex; align-items: center; gap: var(--space-md); padding: 12px var(--space-md); background: var(--surface); border-radius: var(--radius);">
+          <span class="badge badge-verified" style="min-width: 100px; justify-content: center;">active</span>
+          <span style="font-size: 0.875rem; color: var(--text-2);">Page is live. Accepting donations. Verification is current.</span>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: var(--space-md); padding: 12px var(--space-md); background: var(--surface); border-radius: var(--radius);">
+          <span class="badge badge-tier" style="min-width: 100px; justify-content: center;">anchored</span>
+          <span style="font-size: 0.875rem; color: var(--text-2);">Proof record has been committed to Bitcoin. Publicly verifiable.</span>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: var(--space-md); padding: 12px var(--space-md); background: var(--surface); border-radius: var(--radius);">
+          <span class="badge badge-expired" style="min-width: 100px; justify-content: center;">expired</span>
+          <span style="font-size: 0.875rem; color: var(--text-2);">Page has passed its time limit. Enters a grace period for renewal.</span>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: var(--space-md); padding: 12px var(--space-md); background: var(--surface); border-radius: var(--radius);">
+          <span class="badge badge-disputed" style="min-width: 100px; justify-content: center;">aborted</span>
+          <span style="font-size: 0.875rem; color: var(--text-2);">Creator voluntarily closed the page. Remains as historical record.</span>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: var(--space-md); padding: 12px var(--space-md); background: var(--surface); border-radius: var(--radius);">
+          <span class="badge" style="min-width: 100px; justify-content: center; background: #FDE8E8; color: #C62828; border-color: #EF9A9A;">compromised</span>
+          <span style="font-size: 0.875rem; color: var(--text-2);">Page flagged for abuse or security issue. Donations blocked.</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 7. Why the page is locked down -->
+    <section class="section">
+      <h2>Why pages are locked down</h2>
+      <p style="color: var(--text-2); font-size: 0.9375rem; margin-bottom: var(--space-lg);">
+        Fund Registry intentionally restricts what can be changed after a page is created. This is a security measure, not a limitation.
+      </p>
+      <div class="boundaries">
+        <div class="boundary-item">
+          <div class="boundary-icon">🔒</div>
+          <div class="boundary-text"><strong>Immutable Bitcoin address</strong>Cannot be changed after creation. Prevents address-swap attacks.</div>
+        </div>
+        <div class="boundary-item">
+          <div class="boundary-icon">₿</div>
+          <div class="boundary-text"><strong>Bitcoin only</strong>Fund Registry verifies and anchors on-chain Bitcoin addresses only. No other networks or tokens are supported.</div>
+        </div>
+        <div class="boundary-item">
+          <div class="boundary-icon">🔗</div>
+          <div class="boundary-text"><strong>Short correction window for links</strong>Social links can only be edited briefly after creation.</div>
+        </div>
+        <div class="boundary-item">
+          <div class="boundary-icon">📄</div>
+          <div class="boundary-text"><strong>Minimal manage surface</strong>tier3 creators can: abort campaign, post updates, add one progress photo. Nothing else.</div>
+        </div>
+      </div>
+      <p style="color: var(--text-2); font-size: 0.9375rem; font-style: italic;">
+        This is deliberate. Fund Registry is not a general-purpose CMS.
+      </p>
+    </section>
+
+    <!-- 8. Public verification example -->
+    <section class="section" style="border-bottom: none;">
+      <h2>Verification example</h2>
+      <p style="color: var(--text-2); font-size: 0.9375rem; margin-bottom: var(--space-lg);">
+        A verified page includes these fields. Compare them against the creator's public claims.
+      </p>
+      <div class="card" style="font-family: var(--font-mono); font-size: 0.8125rem; line-height: 2;">
+        <div class="verify-example-grid" style="display: grid; grid-template-columns: 160px 1fr; gap: var(--space-xs) var(--space-md);">
+          <span style="color: var(--text-3);">Verification code</span>
+          <span>7C285Q</span>
+          <span style="color: var(--text-3);">Address fingerprint</span>
+          <span>bc1q...x4m7</span>
+          <span style="color: var(--text-3);">Proof status</span>
+          <span style="color: var(--verified-text);">wallet-verified</span>
+          <span style="color: var(--text-3);">Anchor txid</span>
+          <span>a1b2c3d4...ef56</span>
+          <span style="color: var(--text-3);">Anchored at</span>
+          <span>Block 941,200</span>
+          <span style="color: var(--text-3);">Proof hash</span>
+          <span>sha256:e9f8a7b6...</span>
+        </div>
+      </div>
+      <p style="color: var(--text-2); font-size: 0.875rem; margin-top: var(--space-md);">
+        <a href="create.html" style="color: var(--accent);">Create your own verified page &rarr;</a>
+      </p>
+    </section>
+
+    <!-- 9. CTA -->
+    <section style="text-align: center; padding: var(--space-2xl) 0 var(--space-lg);">
+      <h2 style="margin-bottom: var(--space-sm);">Ready to publish your official Bitcoin address?</h2>
+      <p style="color: var(--text-2); font-size: 0.9375rem; margin-bottom: var(--space-lg);">No login required. Takes about two minutes.</p>
+      <a href="create.html" class="btn btn-primary" style="display: inline-block; padding: 12px 32px; background: var(--accent); color: #fff; border-radius: var(--radius); text-decoration: none; font-weight: 600; font-size: 0.9375rem;">Create a page</a>
+    </section>
+
+    <div class="trust-boundary">
+      Fund Registry proves wallet control, not the truth of any claim. Use at your own risk.
+    </div>
+
+    <footer class="site-footer">
+      <a href="/">Fund Registry</a>
+      <span class="meta-separator">·</span>
+      <a href="terms.html">Terms</a>
+      <span class="meta-separator">·</span>
+      <a href="terms.html#report">Report abuse</a>
+    </footer>
+
+  </div>
+<!-- Contact bubble -->
+<button id="cb-toggle" class="cb-toggle" aria-label="Send feedback"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></button>
+<div id="cb-card" class="cb-card">
+  <div class="cb-header"><span>Send us a message</span><button class="cb-close">&times;</button></div>
+  <div id="cb-form">
+    <div class="cb-body">
+      <textarea id="cb-msg" placeholder="Question, feedback, or just say hi" maxlength="2000"></textarea>
+      <input type="email" id="cb-email" placeholder="Email if you'd like a reply">
+      <input type="text" id="cb-website" style="display:none" tabindex="-1" autocomplete="off">
+    </div>
+    <div class="cb-footer"><button id="cb-send" class="cb-send">Send</button></div>
+  </div>
+  <div id="cb-status" class="cb-status" style="display:none"></div>
+</div>
+<script src="/assets/contact-bubble.js" defer></script>
+</body>
+</html>

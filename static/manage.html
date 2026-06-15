@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Your Page — Fund Registry</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none'><rect x='12' y='12' width='40' height='40' rx='5' stroke='%232C2C2C' stroke-width='3.5'/><line x1='20' y1='24' x2='44' y2='24' stroke='%232C2C2C' stroke-width='3' stroke-linecap='round'/><line x1='20' y1='32' x2='44' y2='32' stroke='%232C2C2C' stroke-width='3' stroke-linecap='round'/><line x1='20' y1='40' x2='33' y2='40' stroke='%232C2C2C' stroke-width='3' stroke-linecap='round'/><path d='M35 44.5 L40 39 L45 44.5 L40 47.5 Z' fill='%232C2C2C'/></svg>">
+  <link rel="stylesheet" href="styles.css?v=aec13881">
+</head>
+<body>
+  <div class="beta-banner"><strong>Beta</strong> Fund Registry is in beta. Features, data, and terms may change without notice. <a href="terms.html#beta">Learn more</a></div>
+  <div class="container page">
+
+    <header class="site-header">
+      <a href="/" class="site-logo"><svg class="logo-mark" width="22" height="22" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="12" y="12" width="40" height="40" rx="5" stroke="currentColor" stroke-width="3.5"/><line x1="20" y1="24" x2="44" y2="24" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><line x1="20" y1="32" x2="44" y2="32" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><line x1="20" y1="40" x2="33" y2="40" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M35 44.5 L40 39 L45 44.5 L40 47.5 Z" fill="currentColor"/></svg>Fund Registry</a>
+      <nav class="site-nav">
+        <a href="create.html">Create</a>
+      </nav>
+    </header>
+
+    <!-- Auth screen -->
+    <div class="manage-auth" id="authScreen">
+      <h1>Manage your page</h1>
+      <p class="text-secondary" style="margin-bottom: var(--space-xl);">Paste your Campaign Key JSON or upload the key file you downloaded when you created your page.</p>
+
+      <div class="form-group">
+        <div class="file-drop" id="fileDrop">
+          <input type="file" id="fileInput" accept=".json,application/json">
+          <div style="font-weight: 500; margin-bottom: 4px;">Drop your Campaign Key file here</div>
+          <div style="font-size: 0.8125rem; color: var(--text-3);">or click to browse</div>
+        </div>
+      </div>
+
+      <div style="text-align: center; color: var(--text-3); font-size: 0.8125rem; margin-bottom: var(--space-md);">or paste the JSON</div>
+
+      <div class="form-group">
+        <textarea class="form-textarea" id="keyInput" placeholder="Paste your Campaign Key JSON here"></textarea>
+      </div>
+
+      <div id="authError" class="warning" style="display: none; margin-bottom: var(--space-md);"><span class="warning-icon">⚠</span><div id="authErrorText"></div></div>
+
+      <button class="btn btn-primary" id="authBtn" style="width: 100%;">Unlock page</button>
+    </div>
+
+    <!-- Dashboard -->
+    <div class="manage-dashboard" id="dashboard">
+
+      <div class="manage-header">
+        <div>
+          <h1 id="pageTitle"></h1>
+          <div class="page-meta" id="pageMeta"></div>
+        </div>
+        <a id="viewPublicLink" href="#" class="btn btn-small btn-secondary" target="_blank" rel="noopener noreferrer">View public page</a>
+      </div>
+
+      <!-- Stats -->
+      <div class="manage-stats">
+        <div class="stat-card">
+          <div class="stat-value" id="statTier">—</div>
+          <div class="stat-label">Tier</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="statStatus">—</div>
+          <div class="stat-label">Status</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="statExpires">—</div>
+          <div class="stat-label">Expires</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="statContributions">—</div>
+          <div class="stat-label">Contributions</div>
+        </div>
+      </div>
+
+      <div class="action-card" id="paymentCard" style="display: none; margin-bottom: var(--space-xl);">
+        <h3>Pending payment</h3>
+        <div id="paymentCardBody"></div>
+      </div>
+
+      <!-- Wallet proof -->
+      <div class="action-card" id="proofCard" style="display: none; margin-bottom: var(--space-xl);">
+        <h3>Verify your wallet</h3>
+        <p id="proofIntro">Prove you control the Bitcoin address on this page. This requires signing a one-time challenge with your wallet.</p>
+
+        <!-- Step 1: Start -->
+        <div id="proofStep1">
+          <button class="btn btn-primary" id="startProofBtn">Start verification</button>
+        </div>
+
+        <!-- Step 2: Sign -->
+        <div id="proofStep2" style="display: none;">
+          <div id="proofMethodSummary" style="font-weight: 500; margin-bottom: var(--space-sm);">Sign this message with your Bitcoin wallet:</div>
+          <div style="position: relative;">
+            <textarea class="form-textarea" id="proofMessage" readonly style="font-family: var(--font-mono); font-size: 0.75rem; min-height: 120px; background: var(--surface);"></textarea>
+            <button class="btn btn-small btn-secondary" id="copyProofMsg" style="position: absolute; top: 8px; right: 8px;">Copy</button>
+          </div>
+          <div id="proofHelp" style="margin-top: var(--space-md); font-size: 0.8125rem; color: var(--text-2);">
+            <strong>How to sign:</strong>
+            <ul id="proofHelpList" style="padding-left: var(--space-md); margin-top: var(--space-xs); line-height: 1.8;">
+              <li><strong>Sparrow:</strong> Tools → Sign/Verify Message → paste message → sign with your address</li>
+              <li><strong>Electrum:</strong> Tools → Sign/Verify Message → paste message → sign</li>
+              <li><strong>bitcoin-cli:</strong> <code style="font-size: 0.75rem; background: var(--surface); padding: 2px 6px; border-radius: 2px;">bitcoin-cli signmessage "YOUR_ADDRESS" "MESSAGE"</code></li>
+            </ul>
+          </div>
+          <div style="margin-top: var(--space-md);">
+            <label class="form-label" id="proofSignatureLabel" for="proofSignature">Paste your base64 signature:</label>
+            <textarea class="form-textarea" id="proofSignature" placeholder="Paste the signature here" style="font-family: var(--font-mono); font-size: 0.8125rem; min-height: 60px;"></textarea>
+          </div>
+          <div id="proofError" style="display: none; margin-top: var(--space-sm); font-size: 0.8125rem; color: #C62828;"></div>
+          <button class="btn btn-primary" id="submitProofBtn" style="margin-top: var(--space-sm);">Submit proof</button>
+        </div>
+
+        <!-- Step 3: Success -->
+        <div id="proofStep3" style="display: none;">
+          <div class="success-box">Wallet verified. Your page now shows a verification badge.</div>
+        </div>
+      </div>
+
+      <!-- Actions grid -->
+      <div class="action-grid">
+
+        <!-- Photo -->
+        <div class="action-card">
+          <h3>Story photo</h3>
+          <p>Upload or replace your page photo. Max 200KB, displays at 140×140px.</p>
+          <div id="currentPhoto"></div>
+          <div class="file-drop" id="photoDrop" style="padding: var(--space-md);">
+            <input type="file" id="photoInput" accept="image/jpeg,image/png,image/webp">
+            <div style="font-size: 0.8125rem;">Drop image or click to browse</div>
+          </div>
+        </div>
+
+        <!-- Post update -->
+        <div class="action-card">
+          <h3>Post an update</h3>
+          <p>Share progress with supporters. Updates appear on your public page.</p>
+          <textarea class="form-textarea" id="updateBody" placeholder="What's new?" style="min-height: 80px;"></textarea>
+          <button class="btn btn-small btn-primary" id="postUpdateBtn" style="margin-top: var(--space-sm);">Post update</button>
+        </div>
+
+        <!-- Social links -->
+        <div class="action-card">
+          <h3>Social links</h3>
+          <p>Add links to your website, social media, or project pages during the 24-hour correction window.</p>
+          <div id="linksContainer"></div>
+          <button class="btn btn-small btn-secondary" id="addLinkBtn" style="margin-top: var(--space-sm);">+ Add link</button>
+          <div style="margin-top: var(--space-sm); font-size: 0.75rem; color: var(--text-3);">After 24 hours, links lock permanently.</div>
+        </div>
+
+        <!-- Upgrade tier (dual-path chooser) -->
+        <div class="action-card" id="upgradeCard" style="grid-column: 1 / -1;">
+          <h3>Upgrade tier</h3>
+          <p>Unlock wallet proof (tier2) or add a permanent Bitcoin anchor (tier3).</p>
+
+          <div style="display: flex; gap: var(--space-md); flex-wrap: wrap; margin-top: var(--space-md);">
+
+            <!-- Path 1: Pay with Bitcoin -->
+            <div style="flex: 1; min-width: 240px; border: 1px solid var(--border); border-radius: var(--radius); padding: var(--space-md);">
+              <div style="font-weight: 600; font-size: 0.875rem; margin-bottom: var(--space-sm);">Pay with Bitcoin</div>
+              <div id="upgradeOptions"></div>
+              <div id="btcPausedNotice" style="display: none; margin-top: var(--space-sm); padding: var(--space-sm) var(--space-md); background: var(--surface); border-radius: var(--radius); font-size: 0.8125rem; color: var(--text-2); line-height: 1.6;">
+                <span style="display: inline-block; background: var(--warn-bg); color: var(--warn-text); font-size: 0.75rem; font-weight: 600; padding: 1px 8px; border-radius: 2px; margin-bottom: var(--space-xs);">Paused</span><br>
+                Bitcoin checkout is temporarily paused. Save your Campaign Key and come back when checkout reopens.
+              </div>
+            </div>
+
+            <!-- Path 2: Use invite code -->
+            <div style="flex: 1; min-width: 240px; border: 1px solid var(--border); border-radius: var(--radius); padding: var(--space-md);">
+              <div style="font-weight: 600; font-size: 0.875rem; margin-bottom: var(--space-sm);">Use invite code</div>
+              <div style="font-size: 0.8125rem; color: var(--text-2); margin-bottom: var(--space-md);">Have an invite code? Enter it to activate your tier.</div>
+              <div style="display: flex; gap: var(--space-sm);">
+                <input type="text" class="form-input" id="promoCode" placeholder="Enter invite code" style="flex: 1;">
+                <button class="btn btn-small btn-primary" id="applyPromoBtn">Apply</button>
+              </div>
+              <div id="promoResult" style="margin-top: var(--space-sm); font-size: 0.8125rem;"></div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Renew -->
+        <div class="action-card" id="renewCard">
+          <h3>Renew page</h3>
+          <p>Extend your page before it expires.</p>
+          <button class="btn btn-small btn-primary" id="renewBtn">Renew</button>
+          <div id="renewResult" style="margin-top: var(--space-sm); font-size: 0.8125rem;"></div>
+        </div>
+
+      </div>
+
+      <!-- Danger zone -->
+      <div class="danger-zone" style="margin-top: var(--space-xl);">
+        <h3>Abort page</h3>
+        <p style="font-size: 0.875rem; color: var(--text-2); margin-bottom: var(--space-sm);">Permanently close this page. This cannot be undone.</p>
+        <ul style="font-size: 0.8125rem; color: var(--text-3); margin-bottom: var(--space-md); padding-left: var(--space-lg); line-height: 1.6;">
+          <li>Your page becomes read-only and marked as aborted</li>
+          <li>Edits and new contributions are permanently disabled</li>
+          <li>The page stays visible as a historical record</li>
+        </ul>
+        <button class="btn btn-small btn-danger" id="archivePageBtn">Abort this page</button>
+      </div>
+
+    </div>
+
+    <div class="trust-boundary" style="margin-top: var(--space-2xl);">
+      Your Campaign Key is sent over HTTPS to authenticate each request. Keep it safe — anyone with this key can manage your page.
+    </div>
+
+    <footer class="site-footer">
+      <a href="/">Fund Registry</a>
+      <span class="meta-separator">·</span>
+      <a href="terms.html">Terms</a>
+    </footer>
+
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="/assets/manage.js" defer></script>
+<!-- Contact bubble -->
+<button id="cb-toggle" class="cb-toggle" aria-label="Send feedback"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></button>
+<div id="cb-card" class="cb-card">
+  <div class="cb-header"><span>Send us a message</span><button class="cb-close">&times;</button></div>
+  <div id="cb-form">
+    <div class="cb-body">
+      <textarea id="cb-msg" placeholder="Question, feedback, or just say hi" maxlength="2000"></textarea>
+      <input type="email" id="cb-email" placeholder="Email if you'd like a reply">
+      <input type="text" id="cb-website" style="display:none" tabindex="-1" autocomplete="off">
+    </div>
+    <div class="cb-footer"><button id="cb-send" class="cb-send">Send</button></div>
+  </div>
+  <div id="cb-status" class="cb-status" style="display:none"></div>
+</div>
+<script src="/assets/contact-bubble.js" defer></script>
+</body>
+</html>

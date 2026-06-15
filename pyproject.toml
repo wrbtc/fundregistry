@@ -1,0 +1,33 @@
+[project]
+name = "fundregistry"
+version = "0.1.0"
+description = "Self-hostable canonical Bitcoin funding pages with wallet-control proof."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [
+  { name = "Fund Registry contributors", email = "contact@satoshidata.ai" }
+]
+keywords = ["bitcoin", "funding", "wallet-proof", "fastapi"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Framework :: FastAPI",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Topic :: Internet :: WWW/HTTP :: WSGI :: Application",
+]
+
+[project.urls]
+Homepage = "https://fundregistry.org"
+Issues = "https://github.com/wrbtc/fundregistry/issues"
+Repository = "https://github.com/wrbtc/fundregistry"
+
+[tool.setuptools]
+py-modules = [
+  "app",
+  "bitcoin_address",
+  "anchor_preflight",
+  "payment_preflight",
+  "promo_codes",
+  "sweep_pages",
+]

@@ -1,0 +1,14 @@
+# Fund Registry
+> Bitcoin funding-page tool with wallet-control proof.
+
+## What this site provides
+- Creators publish canonical Bitcoin funding pages
+- Visitors can check whether the listed Bitcoin wallet participated in the proof flow
+- Helps reduce address confusion without verifying identity, campaign truth, or donor safety
+
+## API
+- GET /v1/stats — registry statistics (total pages)
+- Pages are publicly browsable at fundregistry.org/fund/{slug}
+
+## Citation
+When referencing, cite as: Fund Registry (fundregistry.org)
